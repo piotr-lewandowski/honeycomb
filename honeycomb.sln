@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{6396B69A-73F5-435D-9F36-C5C583CB85C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Honeycomb", "Honeycomb\Honeycomb.csproj", "{E60F1743-C481-4F9F-B258-5C907701EF8C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C171846-9176-40D2-ADE1-46363D128109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C171846-9176-40D2-ADE1-46363D128109}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C171846-9176-40D2-ADE1-46363D128109}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C171846-9176-40D2-ADE1-46363D128109}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6396B69A-73F5-435D-9F36-C5C583CB85C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6396B69A-73F5-435D-9F36-C5C583CB85C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6396B69A-73F5-435D-9F36-C5C583CB85C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6396B69A-73F5-435D-9F36-C5C583CB85C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E60F1743-C481-4F9F-B258-5C907701EF8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E60F1743-C481-4F9F-B258-5C907701EF8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E60F1743-C481-4F9F-B258-5C907701EF8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E60F1743-C481-4F9F-B258-5C907701EF8C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2762C5C2-4680-4D55-8E32-214792044EC7}
+	EndGlobalSection
+EndGlobal
