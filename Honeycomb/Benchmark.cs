@@ -24,8 +24,7 @@ public class EncryptBenchmark
 
     private Aes aes;
     private AesGcm aesGcm;
-    private OptimisedHoneycomb optimisedHoneycomb;
-    private NaiveHoneycomb naiveHoneycomb;
+    private HoneycombImpl honeycomb;
 
     private Random rand = new Random();
 
@@ -58,8 +57,7 @@ public class EncryptBenchmark
         cipherBytes = new byte[N * 32];
         tagBytes = new byte[16];
 
-        optimisedHoneycomb = new OptimisedHoneycomb(K, IV);
-        naiveHoneycomb = new NaiveHoneycomb(K, IV);
+        honeycomb = new HoneycombImpl(K.GetLower(), IV.GetLower());
         aesGcm = new AesGcm(keyBytes);
         aes = Aes.Create();
         aes.Key = keyBytes;
@@ -72,11 +70,9 @@ public class EncryptBenchmark
     {
     }
 
-    [Benchmark]
-    public Vector256<byte>[] EncryptOptimised() => optimisedHoneycomb.Encode(M, AD, C).C;
 
     [Benchmark]
-    public Vector256<byte>[] Encrypt() => naiveHoneycomb.Encode(M, AD).C;
+    public Vector256<byte>[] Encrypt() => honeycomb.Encode(M, AD, C).C;
 
     [Benchmark(Baseline = true)]
     public void EncryptAes() => aes.EncryptEcb(mBytes, cipherBytes, PaddingMode.None);

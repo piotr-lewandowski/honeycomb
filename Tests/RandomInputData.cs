@@ -22,8 +22,8 @@ public record RandomInputData
             AD[i] = RandomWord();
         }
 
-        var IV = RandomWord().GetLower();
-        var K = RandomWord().GetLower();
+        var IV = RandomWord().GetLower().GetLower();
+        var K = RandomWord().GetLower().GetLower();
 
         return new InputData(M, AD, C, K, IV);
 
