@@ -123,9 +123,10 @@ interactiveCommand.SetHandler(dir =>
         var (ctxt, len) = ReadCiphertext();
         var ad = ReadAd();
         var outBuffer = new Vector256<byte>[ctxt.Length];
+        var padLen = ctxt.Length * 32 - len;
 
-        var (output, tag) = cipher.Decode(ctxt, ad, outBuffer);
-        var outputBytes = padder.Unpad(output, output.Length * 32 - len);
+        var (output, tag) = cipher.Decode(ctxt, ad, outBuffer, padLen);
+        var outputBytes = padder.Unpad(output, padLen);
         var outputStr = Encoding.UTF8.GetString(outputBytes);
 
         Console.WriteLine("Result:");

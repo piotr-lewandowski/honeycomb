@@ -16,13 +16,9 @@ class Padding : IPadding
         if (padLength == 0)
             padLength = 32;
 
-        // Console.WriteLine("pad length: " + padLength);
-        // Console.WriteLine("total: " + bytes.Length);
-
         var padding = new byte[padLength];
 
-        padding[0] = 0x0001;
-        for (var i = 1; i < padLength; ++i)
+        for (var i = 0; i < padLength; ++i)
         {
             padding[i] = 0;
         }
@@ -32,7 +28,6 @@ class Padding : IPadding
 
     public byte[] Unpad(Vector256<byte>[] padded, int padLength)
     {
-        Console.WriteLine(padLength);
         var bytes = padded.SelectMany(v => {
             var b = new byte[32];
             v.AsByte().CopyTo(b);

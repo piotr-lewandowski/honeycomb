@@ -123,7 +123,7 @@ public class HoneycombImpl
         return result;
     }
 
-    public (Vector256<byte>[] M, UInt16 T) Decode(Vector256<byte>[] C, Vector256<byte>[] AD, Vector256<byte>[] M)
+    public (Vector256<byte>[] M, UInt16 T) Decode(Vector256<byte>[] C, Vector256<byte>[] AD, Vector256<byte>[] M, int padLen)
     {
         Initialize(K, IV);
         ProcessAssociatedData(AD);
@@ -141,12 +141,29 @@ public class HoneycombImpl
             var m2 = c2 ^ T1[4] ^ (T1[1] & T2[2]);
             var m3 = c3 ^ T3[1] ^ T3[3];
 
+            var m = Vector256.Create(Vector128.Create(m0, m1), Vector128.Create(m2, m3));
+            
+            if (i == C.Length - 1)
+            {
+                var mask = new byte[32];
+                for (var j = 0; j<32; ++j)
+                    mask[j] = 0xff;
+                for (var j = 1; j<=padLen; ++j)
+                    mask[32 - j] = 0;
+
+                m = m & Vector256.Create(mask);
+            }
+            
+            m0 = m.GetLower().GetLower();
+            m1 = m.GetLower().GetUpper();
+            m2 = m.GetUpper().GetLower();
+            m3 = m.GetUpper().GetUpper();
+
             T0[4] = T0[4] ^ m0;
             T1[4] = T1[4] ^ m2;
             T2[1] = T2[1] ^ m1;
             T3[1] = T3[1] ^ m3;
 
-            var m = Vector256.Create(Vector128.Create(m0, m1), Vector128.Create(m2, m3));
             M[i] = m;
         }
 
